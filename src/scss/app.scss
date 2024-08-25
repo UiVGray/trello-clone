@@ -1,0 +1,46 @@
+// Vendors
+@import 'bootstrap/scss/bootstrap';
+
+// Components
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Quicksand", sans-serif;
+  font-size: 30px;
+  font-weight: 600;
+  color: #FFFFFF;
+}
+
+body {
+  background: #5243AA;
+}
+
+.header {
+  margin: 15px;
+  max-width: 1400px;
+  width: 100%;
+  margin: 20px auto;
+  padding: 20px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #6554C0;
+  border: solid 1px;
+  border-style: none;
+  border-radius: 10px;
+  &__heading {
+    margin-bottom: 0;
+  }
+
+  &__clock {
+    font-size: 40px;
+    font-weight: 400;
+    font-family: Verdana, Arial, Sans-serif;
+    text-align: center;
+    background: #9387D3;
+    border: solid 1px #A79DDB;
+    border-radius: 15px;
+    padding: 0 10px;
+  }
+}
