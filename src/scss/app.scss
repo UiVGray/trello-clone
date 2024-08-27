@@ -2,18 +2,34 @@
 @import 'bootstrap/scss/bootstrap';
 
 // Components
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: "Quicksand", sans-serif;
-  font-size: 30px;
   font-weight: 600;
-  color: #FFFFFF;
+  color: var(--bs-white);
 }
 
 body {
   background: #5243AA;
+}
+
+h2 {
+  margin-bottom: 0;
+}
+
+p {
+  margin-bottom: .5rem;
+}
+
+select, option {
+  color: var(--bs-black);
+}
+
+select {
+  cursor: pointer;
+  outline: none;
 }
 
 .header {
@@ -29,6 +45,7 @@ body {
   border: solid 1px;
   border-style: none;
   border-radius: 10px;
+
   &__heading {
     margin-bottom: 0;
   }
@@ -43,4 +60,83 @@ body {
     border-radius: 15px;
     padding: 0 10px;
   }
+}
+
+.board {
+  &__wrapper {
+    height: 80vh;
+    max-width: 1400px;
+  }
+
+  &__header {
+    margin-left: 0;
+  }
+
+  &__column-header {
+    max-width: 32%;
+    padding: 0;
+  }
+
+  &__work-area {
+    height: 85%;
+    margin-left: 0;
+  }
+
+  &__column {
+    max-width: 32%;
+  }
+
+  &__column::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.btn {
+  font-size: .5rem;
+}
+
+.todos {
+  background: var(--bs-yellow);
+}
+
+.in-progress {
+  background: var(--bs-cyan);
+}
+
+.done {
+  background: var(--bs-teal);
+}
+
+.task {
+  border: solid 1px gray;
+  border-radius: 10px;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__select {
+    border-radius: 10px;
+    height: 40px;
+    width: 75%;
+  }
+
+  &__footer {
+    align-items: center;
+    gap: 10px;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 10px;
+    width: 25%;
+  }
+
+  // &__button {
+  //   border-radius: 10px;
+  // }
 }
