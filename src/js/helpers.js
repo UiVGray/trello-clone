@@ -35,15 +35,9 @@ function getDataFromLocalStorage() {
 }
 
 function render(payload) {
-  const todoList = payload.filter(function (task) {
-    return task.status === 'todo';
-  })
-  const inProgressList = payload.filter(function (task) {
-    return task.status === 'in-progress';
-  })
-  const doneList = payload.filter(function (task) {
-    return task.status === 'done';
-  })
+  const todoList = payload.filter(task => task.status === 'todo');
+  const inProgressList = payload.filter(task => task.status === 'in-progress');
+  const doneList = payload.filter(task => task.status === 'done');
 
   todosCounterHeadingElement.textContent = todoList.length;
   inProgressCounterHeadingElement.textContent = inProgressList.length;
