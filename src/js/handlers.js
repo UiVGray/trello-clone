@@ -16,7 +16,7 @@ import {
   setDataToLocalStorage,
   render
 } from './helpers.js';
-import { Task } from './models.js';
+import { Task } from './classes.js';
 import { fillSelectTemplate } from './templates.js';
 
 // Event handlers declaration
