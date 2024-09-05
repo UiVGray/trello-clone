@@ -139,13 +139,12 @@ select {
   &__header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-  }
+    align-items: baseline;
+    gap: 10px;
 
-  &__select {
-    border-radius: 10px;
-    height: 40px;
-    width: 75%;
+    & h4 {
+      word-break: break-word;
+    }
   }
 
   &__footer {
@@ -155,9 +154,10 @@ select {
 
   &__buttons {
     display: flex;
-    justify-content: space-evenly;
     align-items: center;
-    gap: 10px;
-    width: 25%;
+
+    & button {
+      color: var(--bs-white);
+    }
   }
 }

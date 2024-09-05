@@ -6,7 +6,7 @@ import {
   doneDivElement,
   todosCounterHeadingElement,
   inProgressCounterHeadingElement,
-  doneCounterHeadingElement
+  doneCounterHeadingElement,
 } from './variables.js';
 
 import { buildTaskTemplate } from './templates.js';
@@ -60,9 +60,15 @@ function render(payload) {
   })
 }
 
+async function getUserList(url) {
+  const data = await (await fetch(url)).json();
+  return data.map(user => user.name);
+}
+
 export {
   getTime,
   setDataToLocalStorage,
   getDataFromLocalStorage,
-  render
+  render,
+  getUserList
 };

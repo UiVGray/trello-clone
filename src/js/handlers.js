@@ -2,12 +2,14 @@
 import {
   editFormElement,
   deleteFormElement,
+  addUserSelectElement,
   modalTitleElement,
   modalConfirmationElement,
   modalTitleInputElement,
   modalDescriptionTextareaElement,
   modalUserSelectElement,
-  modalStatusSelectElement
+  modalStatusSelectElement,
+  userList
 } from './variables.js';
 import {
   getDataFromLocalStorage,
@@ -15,6 +17,7 @@ import {
   render
 } from './helpers.js';
 import { Task } from './models.js';
+import { fillSelectTemplate } from './templates.js';
 
 // Event handlers declaration
 function handleSubmitFormAdd({ target }) {
@@ -26,6 +29,10 @@ function handleSubmitFormAdd({ target }) {
   target.reset();
 }
 
+function handleClickButtonAdd() {
+  addUserSelectElement.innerHTML = fillSelectTemplate(userList);
+}
+
 function handleClickButtonEdit({ target }) {
   if (target.dataset.role === 'edit') {
     const taskList = getDataFromLocalStorage();
@@ -35,7 +42,7 @@ function handleClickButtonEdit({ target }) {
     editFormElement.setAttribute('data-id', targetId);
     modalTitleInputElement.value = editedTask.title;
     modalDescriptionTextareaElement.value = editedTask.description;
-    modalUserSelectElement.value = editedTask.assignedUser;
+    modalUserSelectElement.innerHTML = fillSelectTemplate(userList, editedTask.assignedUser);
     modalStatusSelectElement.value = editedTask.status;
   }
 }
@@ -53,6 +60,8 @@ function handleSubmitFormEdit({ target }) {
 
   if (inProgressList.length === 6 & taskStatus === 'in-progress') {
     alert('There are unfinished tasks! Complete them first.');
+    target.value = 'todo';
+    return;
   } else {
     Object.assign(editedTask, {
       title: formData.get('editTitle'),
@@ -79,6 +88,18 @@ function handleChangeSelectStatus({ target }) {
     target.value = 'todo';
     return;
   }
+
+  setDataToLocalStorage(taskList);
+  render(getDataFromLocalStorage());
+}
+
+function handleChangeSelectUser({ target }) {
+  if (target.dataset.role !== 'user-select') return;
+
+  const taskList = getDataFromLocalStorage();
+  const taskId = target.closest('.task').dataset.id;
+  const task = taskList.find(task => task.id === taskId);
+  task.assignedUser = target.value;
 
   setDataToLocalStorage(taskList);
   render(getDataFromLocalStorage());
@@ -120,9 +141,11 @@ function handleSubmitFormDeleteTask() {
 
 export {
   handleSubmitFormAdd,
+  handleClickButtonAdd,
   handleClickButtonEdit,
   handleSubmitFormEdit,
   handleChangeSelectStatus,
+  handleChangeSelectUser,
   handleClickButtonRemoveTask,
   handleClickButtonRemoveAll,
   handleSubmitFormDeleteTask
