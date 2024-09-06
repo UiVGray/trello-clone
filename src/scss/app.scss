@@ -24,6 +24,11 @@ p {
   word-break: break-word;
 }
 
+.board__button:hover, .task__button:hover {
+  filter: invert(55%) sepia(0%) saturate(100%) hue-rotate(279deg) brightness(86%) contrast(78%);
+}
+
+
 select,
 option,
 #add-modal-label,

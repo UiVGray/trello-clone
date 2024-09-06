@@ -1,4 +1,4 @@
-//Imports
+// Imports
 import { userList } from './variables.js'
 
 // Templates creation
